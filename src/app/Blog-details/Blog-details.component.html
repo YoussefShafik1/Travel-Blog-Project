@@ -1,0 +1,45 @@
+<section class="hero">
+  <div class="hero-image" style="background-image: url('{{ blogImage }}');">
+    <div class="hero-text">
+      <h1>{{ blogTitle }}</h1>
+      <h2>Everything you need to know before you go on your adventure</h2>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5">
+  <p class="blog-content">{{ blogContent }}</p>
+
+  <div class="comments-section mt-5">
+    <h3>Comments</h3>
+    <form (ngSubmit)="addComment()" class="comment-form">
+      <input [(ngModel)]="newCommentName" name="name" placeholder="Your name" required>
+      <textarea [(ngModel)]="newComment" name="comment" placeholder="Write your comment..." required></textarea>
+      <button type="submit">Add Comment</button>
+    </form>
+
+    <div *ngIf="comments.length > 0">
+      <h4>All Comments:</h4>
+      <div *ngFor="let comment of comments; let i = index" class="comment-item">
+        <div class="comment-header">
+          <span class="comment-name">{{ comment.name }}</span>
+          <span class="comment-time">{{ comment.time }}</span>
+        </div>
+        <p *ngIf="!isEditing[i]" class="comment-text">{{ comment.text }}</p>
+        <div *ngIf="isEditing[i]" class="edit-comment">
+          <textarea [(ngModel)]="comments[i].text"></textarea>
+          <button (click)="saveEdit(i)">Save</button>
+          <button (click)="cancelEdit(i)">Cancel</button>
+        </div>
+        <div *ngIf="!isEditing[i]" class="action-buttons">
+          <button (click)="editComment(i)"class="edit-button">Edit</button>
+          <button (click)="deleteComment(i)"class="delete-button">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="comments.length === 0">
+      <p>No comments yet. Be the first to comment!</p>
+    </div>
+  </div>
+</div>

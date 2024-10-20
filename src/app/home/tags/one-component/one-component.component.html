@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="breadcrumb">
+    <a href="#">Home</a> &gt; <a href="#">{{ tag }}</a> &gt; The Only Travel Packing Checklist You'll Ever Need
+  </div>
+  <div class="title">{{ tag }} Details</div>
+  <div class="meta">By Mohamed Blogging Tips &nbsp; • &nbsp; March 17, 2017</div>
+  <img [src]="getImageUrl()" alt="{{ tag }}" class="main-image" height="400" width="800" />
+  <div class="content">
+    <p>Explore the thrilling world of surfing in Southern France! This guide covers everything from breathtaking waves and popular surf spots to essential travel tips and insider insights. Plus, discover a taste of Northern Spain’s surf scene to elevate your adventure. Whether you’re a beginner or a seasoned pro, get ready to ride the waves and experience the best of Europe’s surf destinations! {{ tag }}.</p>
+    <!-- Content -->
+  </div>
+
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <div *ngIf="comments.length === 0">No comments yet.</div>
+    <div *ngFor="let comment of comments; let i = index" class="comment">
+        <div class="comment-author">{{ comment.author }}</div>
+        <div class="comment-date">{{ comment.date }}</div>
+        <div class="comment-text">{{ comment.text }}</div>
+        <div class="comment-buttons">
+          <button class="edit" (click)="editComment(i)">Edit</button>
+          <button class="delete" (click)="deleteComment(i)">Delete</button>
+        </div>
+  </div>
+
+  <div class="add-comment">
+    <h3>Add a Comment</h3>
+    <form (submit)="submitComment(author.value, comment.value); author.value=''; comment.value=''">
+      <input #author placeholder="Your Name" type="text" required />
+      <textarea #comment placeholder="Your Comment" rows="5" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
