@@ -12,13 +12,13 @@ export class AboutComponent {
   teamMembers = [
     {
       name: 'Eng. Mohamed Sherif Ahmed',
-      title: 'Project Manager',
+      title: 'Assistant Project Manager',
       photo: 'assets/409499834_3634960836789999_6109892079065105039_n.jpg',
       bio: 'Software engineer',
     },
     {
       name: 'Eng. Youssef Ghobrial Abdullah Shafik',
-      title: 'Assistant Project Manager',
+      title: 'Project Manager',
       photo: 'assets/file.jpg',
       bio: 'Software engineer',
     },
@@ -30,7 +30,7 @@ export class AboutComponent {
     },
     {
       name: 'Eng. Rania Abd-elazeez',
-      title: 'Assistant Project Manager',
+      title: 'Project Manager',
       photo: 'assets/file3.jpg',
       bio: 'Software engineer',
     },
